@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#call").on("click", function(){
+                var makeJsonpCall = function(){
+                    return $.ajax({
+                        url: "rpc.js",
+                        dataType: "jsonp"
+                    });
+                };
+                var handler = function(data){
+                    if (data === "timeout") {
+                        console.log("a timeout occured, forwarding your request");
+                        makeJsonpCall().done(handler);
+                        return;
+                    }else{
+                        console.log("request completed");
+                    }
+                };
+                makeJsonpCall().done(handler);
+            });
+        });
+    </script>
+    <style type="text/css">
+        body{
+            font-family: Verdana;
+        }
+        #me{
+            float:right;
+        }
+    </style>
+    <title>
+        Recursive FTW
+    </title>
+</head>
+<body>
+    <a id="me" href="http://stackoverflow.com/users/867294/willem-dhaeseleer">
+        <img src="http://stackoverflow.com/users/flair/867294.png" width="208" height="58" alt="profile for Willem D&#39;haeseleer at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Willem D&#39;haeseleer at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+    </a>
+    Open the console to see the subsequent requests in the network panel or the console  <br>
+    For the sake of this example each request will timeout after 2 seconds for 3 times. <br> <br>
+    <button id="call">Do jsonp call</button>
+</body>
+</html>

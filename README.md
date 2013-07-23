@@ -1,4 +1,4 @@
-recursive-jsonp
+jsonp-timeout
 ===============
 
-A simple example of recursive jsonp to bypass time out issues
+A simple example of how to handle jsonp timeouts
