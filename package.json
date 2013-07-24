@@ -1,10 +1,12 @@
 {
-  "name": "recursive-jsonp",
-  "version": "0.0.1",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "express": "3.3.0"
-  }
+    "name": "recursive-jsonp",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node app.js",
+        "postinstall": "./node_modules/bower/bin/bower install"
+    },
+    "dependencies": {
+        "express": "3.3.0",
+        "bower": "1.0.x"
+    }
 }
